@@ -6,16 +6,19 @@ public class paracons {
 	int b=4;
 	
 String name ="yasin";
-paracons(){
-	S
-}
+
+
 
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         paracons show = new paracons();
         
-        Sys
+       System.out.println(show.name);
+       System.out.println(show.a);
+       System.out.println(show.b);
+       
+       
 	}
 
 }

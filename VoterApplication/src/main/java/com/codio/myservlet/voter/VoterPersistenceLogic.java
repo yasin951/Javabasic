@@ -13,7 +13,7 @@ public class VoterPersistenceLogic {
  static	PreparedStatement psmt = null;
  static String DriverClass = "oracle:jdbc:driver:DriverManager";
  static String url = "jdbc:oracle:thin:@localhost:1521:xe";
- static String name = "system";
+ static String name = "C##Yasin";
  static String passWord = "manager";
  static String insertQuery = "INSERT INTO voter_app(voter_name , voter_mobileno,voter_age,voter_dob,voter_gender,voter_result) VALUES(?,?,?,?,?,?)";
  
@@ -27,7 +27,7 @@ public class VoterPersistenceLogic {
 			
 			try {
 				connection = DriverManager.getConnection(url,name,passWord);
-				
+				System.out.println("Connection");
 				psmt = connection.prepareStatement(insertQuery);
 				
 				

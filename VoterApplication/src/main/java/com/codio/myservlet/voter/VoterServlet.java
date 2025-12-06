@@ -9,55 +9,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 @WebServlet("/VoterServlet")
 public class VoterServlet extends HttpServlet {
-	
-	String name = null;
-	int age = 0;
-	String gender = null;
-	String number =null;
-	String dateOfBirth = null;
-	PrintWriter pw = null;
-	boolean saveData = false;
-	String result = null;
-	
-	
-	
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		name = request.getParameter("name");
-		age = Integer.parseInt(request.getParameter("age"));
-		gender =request.getParameter("gender");
-		number = request.getParameter("mobile");
-		dateOfBirth = request.getParameter("dob");
-		
-		pw =response.getWriter();
-		
-		if(age >= 18) {
-			     System.out.println("You Are Eligible For Voting");
-			     pw.println("You Are Eligible For Voting");
-			     String result = "Eligible";
-		}else {
-			System.out.println("You Are Not Eligible For Voting");
-			pw.println("You Are Not Eligible For Voting");
-			String result ="Not Eligible";
-			
-		}
-		
-		VoterPersistenceLogic vpl = new VoterPersistenceLogic();
-		saveData = vpl.SaveTheData( name,age,gender,number,dateOfBirth,result);
-		if(saveData == true) {
-			pw.println("Data Inserted Successfully");
-		}else {
-			pw.println("Not Inserted ");
-		}
-		
-				
-		
-	}
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String gender = request.getParameter("gender");
+        String number = request.getParameter("mobile");
+        String dateOfBirth = request.getParameter("dob");
 
+        PrintWriter pw = response.getWriter();
+        String result;
+        boolean saveData = false;
+
+        if (age >= 18) {
+            pw.println("You Are Eligible For Voting");
+            result = "Eligible";
+        } else {
+            pw.println("You Are Not Eligible For Voting");
+            result = "Not Eligible";
+        }
+
+        VoterPersistenceLogic vpl = new VoterPersistenceLogic();
+        saveData = vpl.SaveTheData(name, age, gender, number, dateOfBirth, result);
+
+        if (saveData) {
+            pw.println("Data Inserted Successfully");
+        } else {
+            pw.println("Data Not Inserted!");
+        }
+    }
 }

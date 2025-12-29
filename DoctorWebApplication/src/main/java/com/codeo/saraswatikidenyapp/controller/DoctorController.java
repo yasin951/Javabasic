@@ -35,6 +35,7 @@ public class DoctorController extends HttpServlet {
 	    Doctor doctor = new Doctor( doctor_name,doctor_lastname,doctor_mobileno,doctor_email,doctor_qualification);
 	    
 	    DoctorDao daoimpl = new DoctorDaoImplementation();
+	    
 	    pw = response.getWriter();
 
 	   result =   daoimpl.saveDoctor(doctor);
@@ -43,6 +44,11 @@ public class DoctorController extends HttpServlet {
 	    }else {
 	    	pw.println("Data is not inserted");
 	    }
+	    boolean count = false;
+	    
+	    count = daoimpl.deleteDoctor(doctor);
+	    
+	    
 	   
 	    
 	    

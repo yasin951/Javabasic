@@ -76,7 +76,9 @@
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="reset" class="btn btn-secondary me-md-2">Clear</button>
                             <button type="submit" class="btn btn-primary">Save Doctor</button>
+                             <button type="button" class="btn btn-secondary me-md-2">DELETE</button>
                         </div>
+                        
                     </form>
                 </div>
             </div>

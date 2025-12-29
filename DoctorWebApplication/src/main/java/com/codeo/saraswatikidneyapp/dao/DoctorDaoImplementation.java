@@ -10,9 +10,18 @@ public class DoctorDaoImplementation implements DoctorDao{
 String insert_query = "INSERT INTO doctor(doctor_name,doctor_lastname,doctor_mobileno,doctor_email,doctor_qualification) VALUES(?,?,?,?,?)";
 Connection connection =null;
 PreparedStatement psmt = null;
+String delete_query = "DELETE FROM doctor WHERE doctor_id =  ";
 
 	@Override
-	public boolean deleteDoctor() {
+	public boolean deleteDoctor(Doctor doctor) {
+		
+		try {
+			connection = ConnectionUtil.getConnection();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		// TODO Auto-generated method stub
 		return false;
 	}
